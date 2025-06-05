@@ -7,6 +7,17 @@ const loginError = document.getElementById('login-error');
 const signupError = document.getElementById('signup-error');
 const welcomeMsg = document.getElementById('welcome-msg');
 
+// Helper to show one section and hide others by toggling 'active' class
+function showSection(id) {
+  [loginSection, signupSection, pdfSection].forEach(section => {
+    if (section.id === id) {
+      section.classList.add('active');
+    } else {
+      section.classList.remove('active');
+    }
+  });
+}
+
 // Login
 loginForm.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -28,9 +39,7 @@ loginForm.addEventListener('submit', async (e) => {
 
     if (data.token) localStorage.setItem('authToken', data.token);
 
-    // Show PDF generator section
-    loginSection.style.display = 'none';
-    pdfSection.style.display = 'block';
+    showSection('pdf-section');
     welcomeMsg.textContent = `Welcome, ${email.split('@')[0]} 👋`;
     loginForm.reset();
   } catch (err) {
@@ -58,8 +67,7 @@ signupForm.addEventListener('submit', async (e) => {
 
     localStorage.setItem('authToken', data.token);
 
-    signupSection.style.display = 'none';
-    pdfSection.style.display = 'block';
+    showSection('pdf-section');
     welcomeMsg.textContent = `Welcome, ${email.split('@')[0]} 👋`;
     signupForm.reset();
   } catch (err) {
@@ -68,15 +76,15 @@ signupForm.addEventListener('submit', async (e) => {
 });
 
 // Switch to login
-document.getElementById('show-Login').addEventListener('click', () => {
-  signupSection.style.display = 'none';
-  loginSection.style.display = 'block';
+document.getElementById('show-login').addEventListener('click', (e) => {
+  e.preventDefault();
+  showSection('login-section');
 });
 
 // Switch to signup
-document.getElementById('show-signup').addEventListener('click', () => {
-  loginSection.style.display = 'none';
-  signupSection.style.display = 'block';
+document.getElementById('show-signup').addEventListener('click', (e) => {
+  e.preventDefault();
+  showSection('signup-section');
 });
 
 // Logout
@@ -88,9 +96,7 @@ document.getElementById('logout-btn').addEventListener('click', async () => {
     });
 
     localStorage.removeItem('authToken');
-    loginSection.style.display = 'block';
-    signupSection.style.display = 'none';
-    pdfSection.style.display = 'none';
+    showSection('login-section');
     loginError.textContent = '';
     loginForm.reset();
   } catch (err) {
@@ -98,3 +104,5 @@ document.getElementById('logout-btn').addEventListener('click', async () => {
   }
 });
 
+// On page load, show login section by default
+showSection('login-section');

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>PDF Generator App</title>
   <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 </head>
 <body>
   <div id="app">
@@ -22,7 +23,7 @@
     </section>
 
     <!-- Signup Section (Hidden initially) -->
-    <section id="signup-section" style="display: none;">
+    <section id="signup-section" >
       <h2>Sign Up</h2>
       <form id="signup-form">
         <input type="email" id="signup-email" placeholder="Email" required />
@@ -30,11 +31,11 @@
         <button type="submit">Sign Up</button>
       </form>
       <p id="signup-error" class="error"></p>
-      <p>Already have an account? <a href="#" id="show-Login">Login</a></p>
+      <p>Already have an account? <a href="#" id="show-login">Login</a></p>
     </section>
 
     <!-- PDF Generator Section (Hidden initially) -->
-    <section id="pdf-section" style="display: none;">
+    <section id="pdf-section" >
       <h2 id="welcome-msg">Welcome!</h2>
       <textarea id="pdf-content" placeholder="Write your content here..."></textarea>
       <button id="generate-pdf-btn">Generate & Download PDF</button>
