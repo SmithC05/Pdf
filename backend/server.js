@@ -13,8 +13,6 @@ mongoose.connect(process.env.MONGO_URI)
     server.listen(PORT, async () => {
       console.log(`Server running on port ${PORT}`);
       console.log('✅ MongoDB connected successfully');
-      const open = (await import('open')).default;
-      open(`http://localhost:${PORT}`);
     });
     
   })
