@@ -2,7 +2,7 @@ document.getElementById("generate-pdf-btn").addEventListener("click", async () =
   const content = document.getElementById("pdf-content").value;
 
   try {
-    const res = await fetch("http://localhost:5000/api/pdf/generate", {
+    const res = await fetch("https://pdf-983r.onrender.com/api/pdf/generate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ content }),

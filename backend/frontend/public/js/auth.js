@@ -27,7 +27,7 @@ loginForm.addEventListener('submit', async (e) => {
   const password = document.getElementById('password').value.trim();
 
   try {
-    const res = await fetch('http://localhost:5000/api/auth/login', {
+    const res = await fetch('https://pdf-983r.onrender.com/api/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),
@@ -56,7 +56,7 @@ signupForm.addEventListener('submit', async (e) => {
   const password = document.getElementById('signup-password').value.trim();
 
   try {
-    const res = await fetch('http://localhost:5000/api/auth/signup', {
+    const res = await fetch('https://pdf-983r.onrender.com/api/auth/signup', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),
@@ -90,7 +90,7 @@ document.getElementById('show-signup').addEventListener('click', (e) => {
 // Logout
 document.getElementById('logout-btn').addEventListener('click', async () => {
   try {
-    await fetch('http://localhost:5000/api/auth/logout', {
+    await fetch('https://pdf-983r.onrender.com/api/auth/logout', {
       method: 'POST',
       credentials: 'include',
     });
